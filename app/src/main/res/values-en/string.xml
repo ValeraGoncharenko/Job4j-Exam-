@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Job4j Exam</string>
+    <string name="hello_valera">Hello Valera!</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+</resources>

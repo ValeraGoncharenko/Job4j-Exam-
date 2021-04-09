@@ -1,14 +1,20 @@
 <resources>
     <string name="app_name">Job4j Exam</string>
+    <string name="hello_valera">Привет Валера!</string>
+    <string name="radiobutton" translatable="false">RadioButton</string>
+    <string name="back" translatable="false">Назад</string>
+    <string name="next" translatable="false">Вперед</string>
 
-    <string name="domain_prompt">Выберите область</string>
-    <string name="exp_date">Дата проведения испытания</string>
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    <string name="domain_prompt" translatable="false">Выберите область</string>
     <string-array name="domain_arrays">
         <item>Выберите область</item>
         <item>Московская</item>
         <item>СПб</item>
     </string-array>
 
+    <string name="exp_date" translatable="false">Дата проведения испытания</string>
     <string-array name="exp_date_arrays">
         <item>Выберите дату</item>
         <item>14.03.2021</item>
