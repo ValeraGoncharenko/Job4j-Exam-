@@ -1,10 +1,22 @@
 package ru.job4j.exam;
 
-//Это будет Option - вариант ответа.
+/**
+ * Вариант ответа.
+ * @author Valera Goncharenko (goncharikvv@gmail.com).
+ * @version 1.
+ * @since 23.04.2021.
+ */
 
 public class Option {
 
+    /**
+     * id варианта ответа.
+     */
     private int id;
+
+    /**
+     * Текст варианта ответа.
+     */
     private String text;
 
     public Option(int id, String text) {
@@ -16,15 +28,9 @@ public class Option {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+
 }

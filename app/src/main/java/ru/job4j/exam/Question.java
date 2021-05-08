@@ -2,7 +2,12 @@ package ru.job4j.exam;
 
 import java.util.List;
 
-//Question - сам вопрос с вариантами ответов и правильным ответом.
+/**
+ * Вопрос с вариантами ответов и правильным ответом.
+ * @author Valera Goncharenko (goncharikvv@gmail.com).
+ * @version 1.
+ * @since 23.04.2021.
+ */
 
 public class Question {
 

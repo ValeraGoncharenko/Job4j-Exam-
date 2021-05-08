@@ -16,6 +16,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * MVC. Создания события и получение данных от пользователя.
+ * @author Valera Goncharenko (goncharikvv@gmail.com).
+ * @version 1.
+ * @since 23.04.2021.
+ */
 public class ExamActivity extends AppCompatActivity {
 
     private static final String TAG = "MyLogs";
@@ -25,12 +31,10 @@ public class ExamActivity extends AppCompatActivity {
 
     private RadioGroup variants;
 
-    //поле для хранения ответов пользователя
+    /** Поле для хранения ответов пользователя*/
     private List<Integer> answer = new ArrayList<>();
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+    /**Поле содержащее список вопросов*/
     private final List<Question> questions = Arrays.asList(
             new Question(
                     1, "How many primitive variables does Java have?",
@@ -55,10 +59,12 @@ public class ExamActivity extends AppCompatActivity {
             )
     );
 
+    /**Поле указывающее на текущий вопрос*/
     private int position = 0;
 
-    //Создадим метод, который будет брать текущую позиции и заполнять вопрос и варианты ответов.
-
+    /**
+     * Метод, берет текущюю позицию и заполняет вопрос и варианты ответов.
+     */
     private void fillForm() {
         findViewById(R.id.previous).setEnabled(position != 0);
         findViewById(R.id.next).setEnabled(position != questions.size() - 1);
@@ -74,6 +80,9 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Когда пользователь нажимает кнопку далее ему показывает правильный вариант ответа.
+     */
     private void showAnswer() {
         variants = findViewById(R.id.variants);
         int id = variants.getCheckedRadioButtonId();
@@ -84,32 +93,39 @@ public class ExamActivity extends AppCompatActivity {
         ).show();
     }
 
-    private void  notSelectedNext(){
+    /**
+     * Не переключает кнопку Next если вариант не выбран.
+     */
+    private void notSelectedNext() {
         variants = findViewById(R.id.variants);
         int id = variants.getCheckedRadioButtonId();
-        if(id > 0) {
-         position++;
-         showAnswer();
-        }
-        else    Toast.makeText(
+        if (id > 0) {
+            position++;
+            showAnswer();
+        } else Toast.makeText(
                 this, "Your no answer  ",
                 Toast.LENGTH_SHORT
         ).show();
     }
 
-    private void  notSelectedPrevious(){
+    /**
+     * Не переключает кнопку Previous если вариант не выбран.
+     */
+    private void notSelectedPrevious() {
         variants = findViewById(R.id.variants);
         int id = variants.getCheckedRadioButtonId();
-        if(id > 0) {
+        if (id > 0) {
             position--;
-        }
-        else    Toast.makeText(
+        } else Toast.makeText(
                 this, "Your no answer  ",
                 Toast.LENGTH_SHORT
         ).show();
     }
 
-    private void saveAnswers(){
+    /**
+     * Сохраняет ответы в памяти.
+     */
+    private void saveAnswers() {
         this.answer.add(position, variants.getCheckedRadioButtonId());
     }
 
@@ -117,15 +133,11 @@ public class ExamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam);
-
         variants = findViewById(R.id.variants);
-
         if (savedInstanceState != null) {
-          savedInstanceState.getInt(ROTATION);
+            savedInstanceState.getInt(ROTATION);
         }
-
         this.fillForm();
-
         Button next = findViewById(R.id.next);
         next.setOnClickListener(
                 view -> {
@@ -134,7 +146,6 @@ public class ExamActivity extends AppCompatActivity {
                     fillForm();
                 }
         );
-
         Button previous = findViewById(R.id.previous);
         previous.setOnClickListener(
                 view -> {
@@ -143,8 +154,6 @@ public class ExamActivity extends AppCompatActivity {
                 }
         );
     }
-
-
 
     @Override
     protected void onStart() {
@@ -164,7 +173,6 @@ public class ExamActivity extends AppCompatActivity {
         Log.i(TAG, "OnPause");
     }
 
-
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -183,8 +191,4 @@ public class ExamActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "OnDestroy");
     }
-
-
-
-
 }
