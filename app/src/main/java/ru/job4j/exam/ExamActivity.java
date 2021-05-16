@@ -129,6 +129,25 @@ public class ExamActivity extends AppCompatActivity {
         this.answer.add(position, variants.getCheckedRadioButtonId());
     }
 
+    /**
+     * Метод для упрощения кода и использования его в лямбда-выражениях.
+     * @param view ссылка на кнопку next.
+     */
+    private void nextBtn(View view) {
+        saveAnswers();
+        notSelectedNext();
+        fillForm();
+    }
+
+    /**
+     * Метод для упрощения кода и использования его в лямбда-выражениях.
+     * @param view ссылка на кнопку back.
+     */
+    private void previousBtn(View view) {
+        notSelectedPrevious();
+        fillForm();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,21 +157,12 @@ public class ExamActivity extends AppCompatActivity {
             savedInstanceState.getInt(ROTATION);
         }
         this.fillForm();
+
         Button next = findViewById(R.id.next);
-        next.setOnClickListener(
-                view -> {
-                    saveAnswers();
-                    notSelectedNext();
-                    fillForm();
-                }
-        );
+        next.setOnClickListener(this::nextBtn);
+
         Button previous = findViewById(R.id.previous);
-        previous.setOnClickListener(
-                view -> {
-                    notSelectedPrevious();
-                    fillForm();
-                }
-        );
+        previous.setOnClickListener(this::previousBtn);
     }
 
     @Override
